@@ -28,12 +28,25 @@ class Whatsapp():
         selector = '#app > div > div > div.drawer-manager > span.pane.pane-one > div > span > div > div.drawer-body > div:nth-child(2) > div > div > div > div > div > div.chat-body > div.chat-main > div > span'
         contacts = self.browser.find_elements_by_css_selector(selector)
         for contact in contacts:
-            result.append(contact.text)            
+            result.append(contact.text)
+        # Press Go back
+        self.browser.find_element_by_xpath('//*[@id="app"]/div/div/div[1]/span[1]/div/span/div/header/div/div/button/span').click()
         return result
 
-    def getChat(self, contact_name):
+    def getActiveChat(self, contact_name):
         chat = self.browser.find_element_by_xpath('//span[contains(text(),"{contact_name}")]'.format(contact_name=contact_name))
         return chat.click()
+
+    def getChatBySearch(self, term):
+        searchbox = self.browser.find_element_by_xpath('//*[@id="side"]/div[2]/div/label/input')
+        searchbox.click()
+        searchbox.send_keys(term)
+        sleep(1)
+        # Click on avatar image of search
+        chat = self.browser.find_element_by_xpath('//span[contains(text(), "{term}")]'.format(term=term))
+        chat.click()
+
+
 
     def setTextMessage(self, text):
         messagebox = self.browser.find_element_by_xpath('//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')
