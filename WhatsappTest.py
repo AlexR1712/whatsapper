@@ -1,14 +1,20 @@
 from whatsapp import Whatsapp
+"""
+ws = Whatsapp()
+go = input('Go Ahead!') 
+contacts = ws.getContacts() # Get contact list
+for name in contacts:
+    ws.getChatBySearch(name)
+    ws.setTextMessage('Hola! {name}'.format(name=name))
+    # ws.send()
+input('Exit?')
+ws.exit()
+"""
 
-test = Whatsapp()
-
-#print(test.getContacts())
-go = raw_input('Select Chat')
-#print(test.getContacts()) # retorna un arreglo con los nombres de contactos
-
-test.getChatBySearch('Maria Estefania')
-
-test.setTextMessage('Prueba exitosa!')
-
-raw_input('Exit?')
-test.exit()
+ws = Whatsapp()
+go = input('Go Ahead!')
+name = 'Ambar' 
+ws.getChatBySearch(name)
+ws.setTextMessage('Hola! {name}'.format(name=name))
+ws.send()
+input('Exit?')

@@ -1,5 +1,6 @@
 # -*- coding: utf8 -*- 
-from __future__ import unicode_literals
+# -*- encoding: utf-8 -*-
+"""from __future__ import unicode_literals"""
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from time import sleep
@@ -38,12 +39,13 @@ class Whatsapp():
         return chat.click()
 
     def getChatBySearch(self, term):
+        sleep(1)
         searchbox = self.browser.find_element_by_xpath('//*[@id="side"]/div[2]/div/label/input')
         searchbox.click()
         searchbox.send_keys(term)
         sleep(1)
         # Click on avatar image of search
-        chat = self.browser.find_element_by_xpath('//span[contains(text(), "{term}")]'.format(term=term))
+        chat = self.browser.find_element_by_xpath(u'//span[contains(text(), "{term}")]'.format(term=term))
         chat.click()
 
 
