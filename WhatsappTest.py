@@ -12,9 +12,10 @@ ws.exit()
 """
 
 ws = Whatsapp()
+print(ws.getQR())
 go = input('Go Ahead!')
-name = 'Ambar' 
-ws.getChatBySearch(name)
-ws.setTextMessage('Hola! {name}'.format(name=name))
-ws.send()
+#name = 'Ambar' 
+#ws.getChatBySearch(name)
+#ws.setTextMessage('Hola! {name}'.format(name=name))
+#ws.send()
 input('Exit?')

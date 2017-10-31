@@ -3,6 +3,9 @@
 """from __future__ import unicode_literals"""
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
 
 class Whatsapp():
@@ -14,6 +17,14 @@ class Whatsapp():
             self.browser = getattr(webdriver, driver)()
         URL = 'http://web.whatsapp.com'
         self.browser.get(URL)
+
+    def getQR():
+        try:
+            wait = WebDriverWait(self.browser, 15)
+            image = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div/div[1]/div[1]/div/img')))
+            return image.get_attribute("src")
+        except NoSuchElementException as e:
+            return False
 
     def getContacts(self):
         result = []
