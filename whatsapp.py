@@ -71,21 +71,3 @@ class Whatsapp():
 
     def exit(self):
         return self.browser.quit()
-
-
-""" 
-Steps:
-
-GUI:
-    Set message to send
-    click on start
-
-Selenium class
-
-Get contact list
-For each contact
-    Get chat by name
-    Set message from gui
-    Click on send
-
-"""
